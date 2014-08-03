@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<script src="jquery-2.1.0.js"></script>
+<script type="text/javascript" src="load.php"></script>
+
+<title>Feeling Fine?</title>
+</head>
+
+
+<body>
+
+
+<h1>j's shopping list</h1>
+
+<form action="#">
+	
+<textarea name="content" id="content" cols="30" rows="3"></textarea>
+<p><button id="save">Save</button></p>
+
+</form>
+
+<br>
+
+<div id="title" style="font-weight:bold">item's added</div>
+
+<div id="saved" style="white-space: pre-line;">
+<ul></ul>	
+</div> 
+
+
+<script type="text/javascript">
+
+// add date before feeling
+
+var d  = new Date(); 
+var weekday = new Array(7);
+weekday[0] = "Sunday";
+weekday[1] = "Monday";
+weekday[2] = "Tuesday";
+weekday[3] = "Wednesday";
+weekday[4] = "Thursday";
+weekday[5] = "Friday";
+weekday[6] = "Saturday";
+
+var myDay = weekday[d.getDay()];
+
+
+// AJAX TO CALL LOAD AND GET RESULTS
+
+(function(){
+
+    $.ajax({  
+		type : "POST",  
+		url : "load.php" ,  
+		traditional : true,  
+		//data : campo,  
+		type : "json", // added this line
+		success : function(arrayPHP){  
+
+			for(i=0; i<arrayPHP.length; i++){
+
+
+			var aIndex = $.inArray(arrayPHP[i], arrayPHP);
+
+			//console.log(arrayPHP[i]); 
+			$("#saved ul").append('<li id=' + aIndex + '>' + arrayPHP[i] +'<button type="button" id="close">X</button>' + '</li>');
+
+			
+			} // for			
+		} // success  
+	 	}); // ajax  
+
+
+
+// removes the item with 'X' next to it
+
+$('#saved').on('click', '#close', function(event){
+
+	console.log("click x called");
+	$(this).parent().remove();
+})
+
+
+
+
+}) (); // self init function
+
+
+
+
+
+  /*
+
+setInterval(function(){
+}, 5000);
+
+
+  var today = d.getDay();
+  console.log(today);
+
+  var n = weekday[d.getDay()];
+
+  if (today === 6){
+
+	$('#when').html(n);
+  	
+
+  }
+
+  */
+
+
+// listen for click, then take submit data and save to file.txt 
+
+$('form').on('submit', function(e){ 
+
+	//		URL				DATA 			SUCCESS CALLBACK
+	$.post('save.php', $(this).serialize(), function(responce){
+
+		// callback to show it was a success
+		alert(responce); 
+	})
+
+
+	e.preventDefault(); 
+
+
+})
+
+
+</script>
+
+
+	
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
