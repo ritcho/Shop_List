@@ -47,6 +47,8 @@ weekday[6] = "Saturday";
 
 var myDay = weekday[d.getDay()];
 
+var findDel; 
+
 
 // AJAX TO CALL LOAD AND GET RESULTS
 
@@ -75,13 +77,30 @@ var myDay = weekday[d.getDay()];
 
 
 
+
+
+
 // removes the item with 'X' next to it
 
 $('#saved').on('click', '#close', function(event){
 
 	console.log("click x called");
 	$(this).parent().remove();
+
+	findDel = $(this).parent("li").text().slice(0, -1);
+
+	console.log("you deleted: " + findDel);
+	killTask();  
+
+
+
+
+	// call remove function
 })
+
+
+
+
 
 
 
@@ -89,6 +108,23 @@ $('#saved').on('click', '#close', function(event){
 }) (); // self init function
 
 
+function killTask() {
+
+   console.log('kill loading'); 
+   $.ajax({
+   	  type: "POST",
+      url:'kill.php',
+      data: {ff : findDel},
+      complete: function (response) {
+          alert(response); 
+      },
+
+      error: function () {
+          console.log('Bummer: there was an error!');
+      },
+  });
+  return false;
+} // kill function
 
 
 
@@ -109,6 +145,10 @@ setInterval(function(){
   	
 
   }
+
+
+// Find type of var: console.log($.type(var)); 
+
 
   */
 
