@@ -1,12 +1,12 @@
 <?php
 
 include 'ChromePhp.php';
-ChromePhp::log('killphp loading');
+//ChromePhp::log('killphp loading');
 
 $lines = file('data.txt', FILE_IGNORE_NEW_LINES);
 $remove = $_POST['ff'];
 
-ChromePhp::log($remove);
+//ChromePhp::log($remove);
 ChromePhp::log($lines);	
 
 foreach($lines as $key => $line){
@@ -15,10 +15,10 @@ foreach($lines as $key => $line){
 }
 }
 
-$data = implode("\n", array_values($lines));
+$data = implode(array_values($lines), "\n");
 
-
-ChromePhp::log($data);
+//ChromePhp::log($data);
+ChromePhp::log("you deleted it");
 
 $file = fopen('data.txt', 'w');
 fwrite($file, $data);

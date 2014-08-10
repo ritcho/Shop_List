@@ -47,6 +47,7 @@ weekday[6] = "Saturday";
 
 var myDay = weekday[d.getDay()];
 
+// global for item to delete
 var findDel; 
 
 
@@ -62,7 +63,7 @@ var findDel;
 		type : "json", // added this line
 		success : function(arrayPHP){  
 
-			for(i=0; i<arrayPHP.length; i++){
+			for(i=1; i<arrayPHP.length; i++){
 
 
 			var aIndex = $.inArray(arrayPHP[i], arrayPHP);
@@ -74,8 +75,9 @@ var findDel;
 			} // for			
 		} // success  
 	 	}); // ajax  
-
-
+   		
+	
+}) (); // self init function
 
 
 
@@ -89,23 +91,14 @@ $('#saved').on('click', '#close', function(event){
 
 	findDel = $(this).parent("li").text().slice(0, -1);
 
-	console.log("you deleted: " + findDel);
+	console.log("you're deleting: " + findDel);
 	killTask();  
 
-
-
-
-	// call remove function
+// call remove function
 })
 
 
 
-
-
-
-
-
-}) (); // self init function
 
 
 function killTask() {
@@ -115,8 +108,8 @@ function killTask() {
    	  type: "POST",
       url:'kill.php',
       data: {ff : findDel},
-      complete: function (response) {
-          alert(response); 
+      complete: function () {
+          console.log("killTask ran"); 
       },
 
       error: function () {
@@ -127,13 +120,15 @@ function killTask() {
 } // kill function
 
 
-
-  /*
+ 
 
 setInterval(function(){
+
+	
+
 }, 5000);
 
-
+ /*
   var today = d.getDay();
   console.log(today);
 
@@ -161,7 +156,7 @@ $('form').on('submit', function(e){
 	$.post('save.php', $(this).serialize(), function(responce){
 
 		// callback to show it was a success
-		alert(responce); 
+		console.log(responce); 
 	})
 
 
