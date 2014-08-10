@@ -1,2 +1,6 @@
 todo's:
 
+- bug 1) you delete something 2) then add something = same line
+- add ability to email the list to yourself (auto - i.e. joanaflor@gmail.com)
+- bug that always new line generated.
+- add date infront of each days postings - WHY?
