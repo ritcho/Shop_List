@@ -27,7 +27,7 @@
 <div id="title" style="font-weight:bold">item's added</div>
 
 <div id="saved" style="white-space: pre-line;">
-<ul></ul>	
+<ol></ol>	
 </div> 
 
 
@@ -69,7 +69,7 @@ var findDel;
 			var aIndex = $.inArray(arrayPHP[i], arrayPHP);
 
 			//console.log(arrayPHP[i]); 
-			$("#saved ul").append('<li id=' + aIndex + '>' + arrayPHP[i] +'<button type="button" id="close">X</button>' + '</li>');
+			$("#saved ol").append('<li id=' + aIndex + '>' + arrayPHP[i] +'<button type="button" id="close">X</button>' + '</li>');
 
 			
 			} // for			

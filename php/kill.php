@@ -1,6 +1,6 @@
 <?php
 
-include 'php/ChromePhp.php';
+include 'ChromePhp.php';
 //ChromePhp::log('killphp loading');
 
 $lines = file('data.txt', FILE_IGNORE_NEW_LINES);
