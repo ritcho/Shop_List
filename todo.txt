@@ -1,15 +1,7 @@
 todo's:
 
-- ajax form isn't working right
+- only update the next item instead of kill list and reload
 - add ability to email the list to yourself (auto - i.e. joanaflor@gmail.com)
 - add date infront of each days postings - WHY?
 
 
-
-
-<!-- INPUT LIST ITEM -->
-	<form id ="ContactForm" action = "index2.html" method = "post" data-ajax="false" onsubmit="submitForm()">
-	<label for="content">Add something:</label>
-	<input type="text" name="content" id="content" placeholder="eggs"value="">
-	<button type="submit" class="ui-shadow ui-btn ui-corner-all" id="save">Submit</button>
-	</form>

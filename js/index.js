@@ -29,17 +29,30 @@ var saveWord
 	 	}); // ajax  
    		
 
-
-
 	
 }) (); // self init function
 
 
 
+	// ON ENTER SUBMIT FORM 
+	
+	$(document).ready(function() {      
+    $("#contenty").keypress(function() {
+       
+       if (event.which == 13)
+	{
+		console.log("key pressed");
+		arse();// do work
+	}
+
+    }); // keypress
+
+	}); // ready
+
+
+	
 
 // SAVE CONTENT TO TXT FILE
-
-// which to onclick
 
 function arse(){
 
@@ -52,22 +65,24 @@ function arse(){
       data: {ss : saveWord},
       complete: function () {
           console.log("saving ran"); 
+          console.log('update about to happen');
+  		  update(); 
+          
       },
 
       error: function () {
           console.log('Bummer: there was an error!');
       },
+
   });
   return false;
 
+  
+
+} // arse
 
 
-
-} // saveMe
-
-
-
-// removes the item with 'X' next to it
+// REMOVE LI ITEM AND RUN DELETE ON SERVER 
 
 function removeMe(){
 	
@@ -91,7 +106,7 @@ function removeMe(){
 
 
 
-// delete the item with 'X' next to it
+// DELETE FROM SERVER 
 
 function killTask() {
 
@@ -110,3 +125,39 @@ function killTask() {
   });
   return false;
 } // kill function
+
+
+
+// ON SAVE UPDATES LIST TO SHOW YOUR NEW FEATURE
+
+function update(){
+
+
+	$('li').remove();
+	
+
+
+	 $.ajax({  
+		type : "POST",  
+		url : "php/load.php" ,  
+		traditional : true,    
+		type : "json", // added this line
+		success : function(arrayPHP){  
+
+			for(i=1; i<arrayPHP.length; i++){
+
+
+			var aIndex = $.inArray(arrayPHP[i], arrayPHP);
+
+			console.log('loading items...'); 
+			$("#saved ol").append('<li onclick="removeMe()" data-icon="delete" id=' + aIndex + '>' + '<a href="#" id="close" class="ui-btn ui-btn-icon-right ui-icon-delete">' + arrayPHP[i] +'</a>' + '</li>');
+
+			
+			} // for			
+		} // success  
+	 	}); // ajax  
+
+
+
+}
+

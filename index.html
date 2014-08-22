@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>florina's list</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.3.min.css" />
+	<script src="js/jquery.js"></script>
+	<script src="js/index.js"></script>
+	<script src="js/jquery.mobile-1.4.3.min.js"></script>
+</head>
+<body>
+
+
+<div data-role="page">
+
+	<div data-role="header">
+		<h1>donkey list</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+
+	<!-- INPUT LIST ITEM -->
+
+	<label for="contenty">Add something:</label>
+	<input type="text" name="content" id="contenty" placeholder="eggs"value="">
+	
+	<input type="submit" class="ui-shadow ui-btn ui-corner-all" name="submit" id="save" value="Submit" onclick=" return arse()"></input>
+	
+	
+
+
+	<!-- VIEW LIST ITEMS -->
+	<div id="saved">
+	<ol data-role="listview" data-inset="true">
+
+    	
+	
+	</ol>
+	</div><!-- saved --> 
+
+
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>made by me</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+</body>
+</html>
