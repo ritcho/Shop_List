@@ -35,7 +35,7 @@ var saveWord
 
 
 	// ON ENTER SUBMIT FORM 
-	
+
 	$(document).ready(function() {      
     $("#contenty").keypress(function() {
        
@@ -66,7 +66,8 @@ function arse(){
       complete: function () {
           console.log("saving ran"); 
           console.log('update about to happen');
-  		  update(); 
+  		  update();
+  		  clearForm();  
           
       },
 
@@ -77,9 +78,14 @@ function arse(){
   });
   return false;
 
-  
-
 } // arse
+
+
+function clearForm(){
+
+	$('#contenty').val('');
+
+}
 
 
 // REMOVE LI ITEM AND RUN DELETE ON SERVER 

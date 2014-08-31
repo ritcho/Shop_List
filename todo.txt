@@ -1,6 +1,6 @@
 todo's:
 
-- only update the next item instead of kill list and reload
+- 
 - add ability to email the list to yourself (auto - i.e. joanaflor@gmail.com)
 - add date infront of each days postings - WHY?
 
